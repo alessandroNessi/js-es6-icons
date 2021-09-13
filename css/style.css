@@ -29,9 +29,15 @@ nav{
 .mainContainer{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
     background-color: #aaa;
     height: calc(100vh - 140px);
+}
+#cardContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .fas{
     font-size: 30px;
@@ -39,10 +45,10 @@ nav{
 .animal .fas{
     color: green;
 }
-.drinks .fas{
+.beverage .fas{
     color: red;
 }
-.foods .fas{
+.food .fas{
     color: yellow;
 }
 .mainContainer .card{
