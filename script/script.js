@@ -109,22 +109,25 @@ const icons = [
 },
 ];
 mainContainer=document.getElementById("cardContainer");
-writeAll();
-function writeAll(){
+writeStartingPage();
+
+function writeStartingPage(){
+    let alreadyCategory=[];
+    document.getElementById("typeSelect").innerHTML+=`<option value="">all</option>`;
     icons.forEach((element)=>{
         mainContainer.innerHTML+=`<button class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
+        if(alreadyCategory.includes(element.category)==false){
+            alreadyCategory.push(element.category);
+            document.getElementById("typeSelect").innerHTML+=`<option value="${element.category}">${element.category}</option>`;
+        }
     });
 }
 
-document.getElementById("typeSelect").addEventListener("change",(event)=>{
+document.getElementById("typeSelect").addEventListener("change",()=>{
     value=document.getElementById("typeSelect").value;
+    const filteredIcons=icons.filter(element => (element.category==value||value==""));
     mainContainer.innerHTML="";
-    if(value=="all"){
-        writeAll();
-    }else{
-        const filteredIcons=icons.filter(element => element.category==value);
-        filteredIcons.forEach((element)=>{
+    filteredIcons.forEach((element)=>{
         mainContainer.innerHTML+=`<button class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
     });
-    }
 });

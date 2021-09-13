@@ -46,7 +46,7 @@ nav{
 .fas{
     font-size: 30px;
 }
-.animal .fas{
+/* .animal .fas{
     color: green;
 }
 .beverage .fas{
@@ -54,17 +54,14 @@ nav{
 }
 .food .fas{
     color: yellow;
-}
+} */
 .mainContainer .card{
     margin: 10px;
     padding: 10px;
     height: 100px;
     width: calc(20% - 20px);
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
     border-radius: 10px;
     box-shadow: 2px 2px #888888;
 }
