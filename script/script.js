@@ -124,6 +124,7 @@ function randomMinMax(min,max){
 
 function writeStartingPage(){
     let alreadyCategory=[];
+    document.getElementById("typeSelect").innerHTML="";
     document.getElementById("typeSelect").innerHTML+=`<option value="">all</option>`;
     coloredIcons.forEach((element)=>{
         mainContainer.innerHTML+=`<button class="card ${element.category}"><i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;

@@ -22,11 +22,14 @@ nav{
 .navContainer{
     margin: auto;
     display: flex;
-    min-width: 300px;
+    width: 100%;
     justify-content: space-between;
 }
 .navContainer *, .inputContainer{
     margin: 0 20px;
+}
+.inputContainer *{
+    width: 100px;
 }
 .d-flex{
     display:flex;
