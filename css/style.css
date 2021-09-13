@@ -19,6 +19,15 @@ nav{
     height: 70px;
     background: rgb(41, 177, 221);
 }
+.navContainer{
+    margin: auto;
+    display: flex;
+    min-width: 300px;
+    justify-content: space-between;
+}
+.navContainer *, .inputContainer{
+    margin: 0 20px;
+}
 .d-flex{
     display:flex;
 }
@@ -30,6 +39,12 @@ nav{
 }
 .j-center{
     justify-content: center;
+}
+.j-between{
+    justify-content: space-between;
+}
+.p-std{
+    padding: 1rem;
 }
 .mainContainer{
     display: flex;

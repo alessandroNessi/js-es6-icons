@@ -18,9 +18,20 @@
     <header class="d-flex a-center">
         <h1>Fonticons</h1>
     </header>
-    <nav class="d-flex a-center j-center">
-        <select name="type" id="typeSelect">
-        </select>
+    <nav class="d-flex a-center">
+        <div class="navContainer">
+            <div class="inputContainer">
+                <input placeholder="name" type="text" id="name">
+                <input placeholder="name" type="text" id="family">
+                <input placeholder="name" type="text" id="prefix">
+                <input placeholder="name" type="text" id="category">
+                <button id="addNewCard">
+                    add a new card
+                </button>
+            </div>
+            <select name="type" id="typeSelect">
+            </select>
+        </div>
     </nav>
     <main class="mainContainer">
         <div id="cardContainer">
