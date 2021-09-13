@@ -137,6 +137,17 @@ function addColorCategory(){
     });
 }
 
+function checkInput(){
+    let result=true;
+    let inputElements=document.getElementsByClassName("inputContainer")[0].getElementsByTagName("input");
+    Array.prototype.forEach.call(inputElements,(element)=>{
+        if(element.value.length<1 || element.value.length>50){
+            result= false;
+        }
+    });
+    return result;
+}
+
 document.getElementById("typeSelect").addEventListener("change",()=>{
     value=document.getElementById("typeSelect").value;
     const filteredIcons=coloredIcons.filter(element => (element.category==value||value==""));
@@ -144,4 +155,12 @@ document.getElementById("typeSelect").addEventListener("change",()=>{
     filteredIcons.forEach((element)=>{
         mainContainer.innerHTML+=`<button style="color:${element.color};" class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
     });
+});
+
+document.getElementById("addNewCard").addEventListener("click", ()=>{
+    if(checkInput()==true){
+        alert("ok");
+    }else{
+        alert("not ok");
+    }
 });
