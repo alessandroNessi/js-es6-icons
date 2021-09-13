@@ -1,3 +1,4 @@
+let coloredIcons=[];
 const icons = [
 {
     name: 'apple-alt',
@@ -108,26 +109,39 @@ const icons = [
     category: "animal"
 },
 ];
+categoryColors={
+    animal: 'green',
+    beverage: 'red',
+    food: 'yellow'
+};
 mainContainer=document.getElementById("cardContainer");
+addColorCategory();
 writeStartingPage();
 
 function writeStartingPage(){
     let alreadyCategory=[];
     document.getElementById("typeSelect").innerHTML+=`<option value="">all</option>`;
-    icons.forEach((element)=>{
-        mainContainer.innerHTML+=`<button class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
+    coloredIcons.forEach((element)=>{
+        mainContainer.innerHTML+=`<button class="card ${element.category}"><i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
         if(alreadyCategory.includes(element.category)==false){
             alreadyCategory.push(element.category);
             document.getElementById("typeSelect").innerHTML+=`<option value="${element.category}">${element.category}</option>`;
         }
     });
+    console.log(coloredIcons);
+}
+
+function addColorCategory(){
+    coloredIcons=icons.map((element)=>{
+        return {...element,color: categoryColors[element.category]};
+    });
 }
 
 document.getElementById("typeSelect").addEventListener("change",()=>{
     value=document.getElementById("typeSelect").value;
-    const filteredIcons=icons.filter(element => (element.category==value||value==""));
+    const filteredIcons=coloredIcons.filter(element => (element.category==value||value==""));
     mainContainer.innerHTML="";
     filteredIcons.forEach((element)=>{
-        mainContainer.innerHTML+=`<button class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
+        mainContainer.innerHTML+=`<button style="color:${element.color};" class="card ${element.category}"><i class="${element.family} ${element.prefix}${element.name}"></i><p>${element.name}</p></button>`;
     });
 });
