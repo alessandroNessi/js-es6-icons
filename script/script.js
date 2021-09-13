@@ -118,6 +118,10 @@ mainContainer=document.getElementById("cardContainer");
 addColorCategory();
 writeStartingPage();
 
+function randomMinMax(min,max){
+    return Math.floor(Math.random()*(max-min)+min);
+}
+
 function writeStartingPage(){
     let alreadyCategory=[];
     document.getElementById("typeSelect").innerHTML+=`<option value="">all</option>`;
@@ -133,6 +137,9 @@ function writeStartingPage(){
 
 function addColorCategory(){
     coloredIcons=icons.map((element)=>{
+        if(categoryColors[element.category]==undefined){
+            categoryColors[element.category] = `rgb(${randomMinMax(0,255)},${randomMinMax(0,255)},${randomMinMax(0,255)})`;
+        }
         return {...element,color: categoryColors[element.category]};
     });
 }
@@ -148,6 +155,13 @@ function checkInput(){
     return result;
 }
 
+function cleanInputs(){
+    document.getElementById("name").value="";
+    document.getElementById("family").value="";
+    document.getElementById("prefix").value="";
+    document.getElementById("category").value="";
+}
+
 document.getElementById("typeSelect").addEventListener("change",()=>{
     value=document.getElementById("typeSelect").value;
     const filteredIcons=coloredIcons.filter(element => (element.category==value||value==""));
@@ -159,8 +173,17 @@ document.getElementById("typeSelect").addEventListener("change",()=>{
 
 document.getElementById("addNewCard").addEventListener("click", ()=>{
     if(checkInput()==true){
-        alert("ok");
+        icons.push({
+            name: document.getElementById("name").value,
+            family: document.getElementById("family").value,
+            prefix: document.getElementById("prefix").value,
+            category: document.getElementById("category").value
+        });
+        mainContainer.innerHTML="";
+        addColorCategory();
+        writeStartingPage();
+        cleanInputs();
     }else{
-        alert("not ok");
+        alert("inserimento errato, compilato con campi troppo lunghi o troppo corti");
     }
 });
